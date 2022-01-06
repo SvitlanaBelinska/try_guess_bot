@@ -1,0 +1,29 @@
+org: belinska
+app: mpa-express-serverless
+service: short-bot
+
+useDotenv: true
+
+plugins:
+  - serverless-dotenv-plugin
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  region: eu-west-1
+
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: "20201221"
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: webhook
+          method: post
+          cors: true

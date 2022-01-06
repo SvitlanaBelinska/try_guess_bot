@@ -49,11 +49,14 @@ const start = () => {
             return  startGame(chatId);
         }
         if (data === chats[chatId]){
+            console.log(data);
             return  bot.sendMessage(chatId, `Congratulations! You guessed the number ${chats[chatId]}`, againOptions);
         } else {
+            console.log(data);
             return bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/19d/e76/19de7699-3e77-317e-ab54-01bca2f2fc16/8.webp'), 
             bot.sendMessage(chatId, `I'm sorry you didn't guess right number ${chats[chatId]}, try again! `, againOptions)
         }
     })
 }
 start()
+export { start }
